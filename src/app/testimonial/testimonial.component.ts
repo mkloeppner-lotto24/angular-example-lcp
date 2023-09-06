@@ -9,12 +9,6 @@ export type Testimonial = {
   profileIcon: string
 }
 
-export const defaultTestimonial: Testimonial = {
-  name: `---`,
-  quote: `Loading please wait. Loading please wait. Loading please wait.`,
-  profileIcon: ``
-};
-
 export const testimonial: Testimonial = {
   name: `Martin Klöppner`,
   quote: `Endless seeking for perfection will bring you nowhere.
