@@ -15,7 +15,9 @@ const martin: User = {
   providedIn: 'root'
 })
 export class UserService {
-
-  public users$: Observable<User[]> = interval(4000).pipe(switchMap(() => of([martin])));
+  // State
+  public users$: Observable<User[]> = interval(4000).pipe(
+    switchMap(() => of([martin]))
+  );
 
 }

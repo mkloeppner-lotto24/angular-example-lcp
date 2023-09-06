@@ -22,6 +22,7 @@ export class TestimonialComponent {
   private testimonialService = inject(TestimonialService);
   private userService = inject(UserService);
 
+  // Computed state
   public testimonial$: Observable<TestimonialViewModel> = combineLatest([
     this.testimonialService.testimonial$,
     this.userService.users$]).pipe(switchMap(([testimonial, users]) => {
@@ -33,6 +34,6 @@ export class TestimonialComponent {
         quote: testimonial.quote,
         profileIcon: user.profileIcon,
       });
-  }));
+    }));
 
 }
