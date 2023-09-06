@@ -18,8 +18,6 @@ export class UserService {
   public users$ = this._users$.asObservable();
 
   constructor() {
-    this._users$.next([{ id: 1, profileIcon: '' }]);
-
     this.httpClient.get<User[]>('/users').pipe(take(1)).subscribe(this._users$);
   }
 

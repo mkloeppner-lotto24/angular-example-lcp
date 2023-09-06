@@ -18,8 +18,6 @@ export class QuotesService {
     public quotes$ = this._quotes$.asObservable();
 
     constructor() {
-        this._quotes$.next([{ userId: 1, quote: 'we are loading the quote. Please wait... awe are loading the quote. Please wait... awe are loading the quote. Please wait... aaaaaå' }]);
-
         this.httpClient.get<Quote[]>('/quotes').pipe(take(1)).subscribe(this._quotes$);
     }
 }

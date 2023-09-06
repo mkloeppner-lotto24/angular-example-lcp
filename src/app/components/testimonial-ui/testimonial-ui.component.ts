@@ -35,7 +35,7 @@ export class TestimonialUiComponent {
   protected testimonial: WritableSignal<TestimonialViewModel> = signal<TestimonialViewModel>({
     name: 'Test',
     quote: 'Test',
-    profileIcon: ''
+    profileIcon: 'test'
   });
 
 }

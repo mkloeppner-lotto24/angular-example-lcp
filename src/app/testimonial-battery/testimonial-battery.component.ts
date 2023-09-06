@@ -1,12 +1,12 @@
-import { Component, inject } from '@angular/core';
+import { Component, Signal, inject } from '@angular/core';
 import { AsyncPipe, CommonModule, NgFor } from '@angular/common';
-import { EMPTY, Observable, combineLatest, of, switchMap } from 'rxjs';
+import { EMPTY, Observable, combineLatest, delay, map, of, switchMap } from 'rxjs';
 import { TestimonialService } from '../retention/testimonial.service';
 import { UserService } from '../customer/user.service';
 import { QuotesService } from '../quotes/quotes.service';
 import { TestimonialViewModel } from '../testimonial/testimonial.component';
 import { TestimonialUiComponent } from '../components/testimonial-ui/testimonial-ui.component';
-
+import { ImportedComponentReady } from '@lotto24-angular/imports-orchestrator';
 
 @Component({
   selector: 'app-testimonial-battery',
@@ -43,4 +43,8 @@ export class TestimonialBatteryComponent {
       return of(testimonialViewModels);
     }));
 
+    importedComponentReady(): Promise<void> | Observable<boolean> | Signal<boolean> {
+      return this.testimonials$.pipe(delay(2000), map((_) => true));
+    }
+    
 }

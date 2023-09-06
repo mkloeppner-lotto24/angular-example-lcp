@@ -1,5 +1,4 @@
 import { rest, setupWorker } from 'msw'
-import { getRandomArbitrary } from 'src/app/utils/random'
 
 export const mocks = [
   rest.get('/testimonials', (req, res, ctx) => {
@@ -8,32 +7,32 @@ export const mocks = [
       ctx.status(200),
       ctx.json([{
         name: `Martin Klöppner`,
-        quote: getRandomArbitrary(0, 3),
+        quote: 1,
         userId: 1
       },
       {
         name: `Homer Simpson`,
-        quote: getRandomArbitrary(0, 3),
+        quote: 2,
         userId: 2
       },
       {
         name: `Bart Simpson`,
-        quote: getRandomArbitrary(0, 3),
+        quote: 3,
         userId: 3
       },
       {
         name: `Iron Man`,
-        quote: getRandomArbitrary(0, 3),
+        quote: 1,
         userId: 4
       },
       {
         name: `Iron Man`,
-        quote: getRandomArbitrary(0, 3),
+        quote: 2,
         userId: 5
       },
       {
         name: `Iron Man`,
-        quote: getRandomArbitrary(0, 3),
+        quote: 3,
         userId: 6
       }
       ]),
