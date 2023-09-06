@@ -2,6 +2,13 @@ import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 
+import { Imports, ImportsOrchestratorDirective, importStandalone } from '@lotto24-angular/imports-orchestrator'
+
+@Imports({
+  testimonial: importStandalone(() => import('./testimonial/testimonial.component')),
+  text: importStandalone(() => import('./home/text/text.component')),
+  battery: importStandalone(() => import('./testimonial-battery/testimonial-battery.component')),
+})
 @Component({
   selector: 'app-root',
   standalone: true,
