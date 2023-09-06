@@ -9,6 +9,13 @@ export type Testimonial = {
   profileIcon: string
 }
 
+export const defaultTestimonial: Testimonial = {
+  name: `Default placeholder`,
+  quote: `Loading loading loading loading loading loading loading loading Loading loading loading loading loading loading loading loading`,
+  profileIcon: '',
+};
+
+
 export const testimonial: Testimonial = {
   name: `Martin Klöppner`,
   quote: `Endless seeking for perfection will bring you nowhere.
@@ -25,5 +32,8 @@ export const testimonial: Testimonial = {
 })
 export class TestimonialComponent {
   public testimonial$: Observable<Testimonial> =
-      interval(2000).pipe(take(1), switchMap(() => of(testimonial)))
+      merge(
+        of(defaultTestimonial),
+        interval(2000).pipe(take(1), switchMap(() => of(testimonial)))
+      )
 }
