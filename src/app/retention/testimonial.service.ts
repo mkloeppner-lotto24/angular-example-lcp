@@ -1,5 +1,6 @@
-import { Injectable } from '@angular/core';
+import { Injectable, inject } from '@angular/core';
 import { Observable, interval, of, switchMap, take } from 'rxjs';
+import { HttpClient } from '@angular/common/http';
 
 
 export type Testimonial = {
@@ -22,12 +23,16 @@ export const testimonial: Testimonial = {
 };
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class TestimonialService {
+
+  private httpClient = inject(HttpClient);
+
   // State
-  public testimonial$: Observable<Testimonial> =
-    interval(2000).pipe(take(1), switchMap(() => of(testimonial)))
+  public get testimonial$(): Observable<Testimonial> {
+    return this.httpClient.get<Testimonial>('/testimonials');
+  }
 
   constructor() { }
 }

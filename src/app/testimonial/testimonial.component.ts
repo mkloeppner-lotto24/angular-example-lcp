@@ -1,8 +1,8 @@
 import { Component, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { EMPTY, Observable, combineLatest, defaultIfEmpty, delay, interval, map, merge, mergeAll, of, switchMap, take } from 'rxjs';
-import { TestimonialService } from '../testimonial.service';
-import { UserService } from '../user.service';
+import { TestimonialService } from '../retention/testimonial.service';
+import { UserService } from '../customer/user.service';
 
 export type TestimonialViewModel = {
   name: string,
