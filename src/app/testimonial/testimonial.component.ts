@@ -1,26 +1,14 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { wait } from '../utils/wait';
-import { Observable, defaultIfEmpty, delay, interval, merge, mergeAll, of, switchMap, take } from 'rxjs';
+import { EMPTY, Observable, combineLatest, defaultIfEmpty, delay, interval, map, merge, mergeAll, of, switchMap, take } from 'rxjs';
+import { TestimonialService } from '../testimonial.service';
+import { UserService } from '../user.service';
 
-export type Testimonial = {
+export type TestimonialViewModel = {
   name: string,
   quote: string,
   profileIcon: string
 }
-
-export const defaultTestimonial: Testimonial = {
-  name: `---`,
-  quote: `Loading please wait. Loading please wait. Loading please wait.`,
-  profileIcon: ``
-};
-
-export const testimonial: Testimonial = {
-  name: `Martin Klöppner`,
-  quote: `Endless seeking for perfection will bring you nowhere.
-   Just go the next better step and you arrive further.`,
-  profileIcon: `https://media.licdn.com/dms/image/C4D03AQFj2D9iDa7oJA/profile-displayphoto-shrink_400_400/0/1516997069619?e=1699488000&v=beta&t=1Rev1nSyFTTO8tvdhjTyBo532QrRt9Cb7yT4Q_Z7rnA`
-};
 
 @Component({
   selector: 'app-testimonial',
@@ -30,6 +18,21 @@ export const testimonial: Testimonial = {
   styleUrls: ['./testimonial.component.scss']
 })
 export class TestimonialComponent {
-  public testimonial$: Observable<Testimonial> =
-      interval(2000).pipe(take(1), switchMap(() => of(testimonial)))
+
+  private testimonialService = inject(TestimonialService);
+  private userService = inject(UserService);
+
+  public testimonial$: Observable<TestimonialViewModel> = combineLatest([
+    this.testimonialService.testimonial$,
+    this.userService.users$]).pipe(switchMap(([testimonial, users]) => {
+      const user = users.find((user) => user.id === testimonial.userId);
+      if (!user) return EMPTY;
+
+      return of({
+        name: testimonial.name,
+        quote: testimonial.quote,
+        profileIcon: user.profileIcon,
+      });
+  }));
+
 }
