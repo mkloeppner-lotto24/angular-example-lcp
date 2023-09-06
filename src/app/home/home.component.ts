@@ -1,8 +1,6 @@
 import { Component, ViewChild, ViewContainerRef } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { TestimonialComponent } from '../testimonial/testimonial.component';
-import { TestimonialBatteryComponent } from '../testimonial-battery/testimonial-battery.component';
-import { TextComponent } from './text/text.component';
 
 @Component({
   selector: 'app-home',

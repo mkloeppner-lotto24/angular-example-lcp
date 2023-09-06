@@ -1,8 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
-import { TestimonialBatteryComponent } from './testimonial-battery/testimonial-battery.component';
-import { TestimonialComponent } from './testimonial/testimonial.component';
 
 @Component({
   selector: 'app-root',
