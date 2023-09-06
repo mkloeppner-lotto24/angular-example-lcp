@@ -7,7 +7,7 @@ import { TestimonialComponent } from './testimonial/testimonial.component';
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [CommonModule, RouterOutlet, TestimonialComponent, TestimonialBatteryComponent],
+  imports: [CommonModule, RouterOutlet],
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })

@@ -30,7 +30,7 @@ export class TestimonialComponent {
   public testimonial$: Observable<TestimonialViewModel> = combineLatest([
     this.testimonialService.testimonial$,
     this.userService.users$,
-    this.quoteService.quotes$]).pipe(delay(1000), switchMap(([testimonials, users, quotes]) => {
+    this.quoteService.quotes$]).pipe(switchMap(([testimonials, users, quotes]) => {
       const testimonial = testimonials[getRandomArbitrary(1,2)];
 
       const user = users.find((user) => user.id === testimonial.userId);

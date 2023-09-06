@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable, inject } from '@angular/core';
-import { Observable } from 'rxjs';
+import { Observable, merge, of } from 'rxjs';
 
 
 export type Quote = {
@@ -16,6 +16,6 @@ export class QuotesService {
     private httpClient = inject(HttpClient);
 
     public get quotes$(): Observable<Quote[]> {
-        return this.httpClient.get<Quote[]>('/quotes');
+        return merge(of<Quote[]>([{ userId: 1, quote: 'we are loading the quote. Please wait... awe are loading the quote. Please wait... awe are loading the quote. Please wait... aaaaaå' }]), this.httpClient.get<Quote[]>('/quotes'));
     }
 }

@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable, inject } from '@angular/core';
-import { Observable } from 'rxjs';
+import { Observable, merge, of } from 'rxjs';
 
 export type User = {
   id: number,
@@ -16,7 +16,7 @@ export class UserService {
   private httpClient = inject(HttpClient);
 
   public get users$(): Observable<User[]> {
-    return this.httpClient.get<User[]>('/users');
+    return merge(of([{ id: 1, profileIcon: '' }]), this.httpClient.get<User[]>('/users'));
   }
 
 }
