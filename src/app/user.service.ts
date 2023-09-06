@@ -16,6 +16,6 @@ const martin: User = {
 })
 export class UserService {
 
-  public users$: Observable<User[]> = interval(1000).pipe(switchMap(() => of([martin])));
+  public users$: Observable<User[]> = interval(4000).pipe(switchMap(() => of([martin])));
 
 }
