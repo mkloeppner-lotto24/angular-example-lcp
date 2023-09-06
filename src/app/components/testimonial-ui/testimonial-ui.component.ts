@@ -1,5 +1,5 @@
-import { Component, Input, Signal, WritableSignal, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { Component, Input, WritableSignal, signal } from '@angular/core';
 import { TestimonialViewModel } from 'src/app/testimonial/testimonial.component';
 
 @Component({

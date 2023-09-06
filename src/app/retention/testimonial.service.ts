@@ -1,6 +1,6 @@
-import { Injectable, inject } from '@angular/core';
-import { Observable, interval, of, switchMap, take } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
+import { Injectable, inject } from '@angular/core';
+import { Observable } from 'rxjs';
 
 
 export type Testimonial = {

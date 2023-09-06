@@ -1,10 +1,8 @@
-import { setupWorker, rest } from 'msw'
+import { rest, setupWorker } from 'msw'
 import { getRandomArbitrary } from 'src/app/utils/random'
 
 export const mocks = [
   rest.get('/testimonials', (req, res, ctx) => {
-    const { user } = req.params
-
     return res(
       ctx.delay(2000),
       ctx.status(200),
@@ -42,8 +40,6 @@ export const mocks = [
     )
   }),
   rest.get('/users', (req, res, ctx) => {
-    const { user } = req.params
-
     return res(
       ctx.delay(1000),
       ctx.status(200),
@@ -75,8 +71,6 @@ export const mocks = [
   }),
 
   rest.get('/quotes', (req, res, ctx) => {
-    const { user } = req.params
-
     return res(
       ctx.delay(1000),
       ctx.status(200),
@@ -183,4 +177,4 @@ export const mocks = [
 const worker = setupWorker(...mocks)
 worker.start()
 
-export { worker, rest }
+export { rest, worker }

@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable, inject } from '@angular/core';
-import { Observable, interval, of, switchMap } from 'rxjs';
+import { Observable } from 'rxjs';
 
 export type User = {
   id: number,
