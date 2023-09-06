@@ -14,8 +14,7 @@ export type Quote = {
 export class QuotesService {
 
     private httpClient = inject(HttpClient);
-
-    // State
+    
     public get quotes$(): Observable<Quote[]> {
         return this.httpClient.get<Quote[]>('/quotes');
     }

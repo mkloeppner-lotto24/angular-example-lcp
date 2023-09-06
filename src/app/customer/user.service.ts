@@ -15,7 +15,6 @@ export class UserService {
 
   private httpClient = inject(HttpClient);
 
-  // State
   public get users$(): Observable<User[]> {
     return this.httpClient.get<User[]>('/users');
   }

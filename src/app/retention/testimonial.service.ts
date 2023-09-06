@@ -15,8 +15,7 @@ export type Testimonial = {
 export class TestimonialService {
 
   private httpClient = inject(HttpClient);
-
-  // State
+  
   public get testimonial$(): Observable<Testimonial[]> {
     return this.httpClient.get<Testimonial[]>('/testimonials');
   }
