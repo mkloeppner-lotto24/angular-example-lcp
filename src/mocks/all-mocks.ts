@@ -6,7 +6,7 @@ export const mocks = [
     const { user } = req.params
 
     return res(
-      // ctx.delay(2000),
+      ctx.delay(2000),
       ctx.status(200),
       ctx.json([{
         name: `Martin Klöppner`,
@@ -45,7 +45,7 @@ export const mocks = [
     const { user } = req.params
 
     return res(
-      // ctx.delay(4000),
+      ctx.delay(1000),
       ctx.status(200),
       ctx.json([{
         id: 1,
@@ -78,7 +78,7 @@ export const mocks = [
     const { user } = req.params
 
     return res(
-      // ctx.delay(1000),
+      ctx.delay(1000),
       ctx.status(200),
       ctx.json([{
         userId: 1,
@@ -98,35 +98,35 @@ export const mocks = [
       },
       {
         userId: 2,
-        quote: 'D\'oooohhh'
+        quote: 'D\'oooohhh. I need some burger from Krusty! And a Donut.'
       },
       {
         userId: 2,
-        quote: 'Pass auf junge ich ... 😵.',
+        quote: 'If God didn’t want me to eat chicken in church, then he would have made gluttony a sin.',
       },
       {
         userId: 2,
-        quote: 'Flanders!!',
+        quote: 'Kids are great. You can teach them to hate what you hate and, with the Internet and all, they practically raise themselves.',
       },
       {
         userId: 2,
-        quote: 'Bart!!!.',
+        quote: 'I want to share something with you: The three little sentences that will get you through life. Number 1: Cover for me. Number 2: Oh, good idea, Boss! Number 3: It was like that when I got here.',
       },
       {
         userId: 3,
-        quote: 'D\'oooohhh'
+        quote: 'Eat my shorts! Eat my shorts! Eat my shorts! Eat my shorts!'
       },
       {
         userId: 3,
-        quote: 'Pass auf junge ich ... 😵.',
+        quote: 'No, you don’t understand. I tried. I really tried.',
       },
       {
         userId: 3,
-        quote: 'Flanders!!',
+        quote: 'You’re asking the wrong guy, Milhouse, you’re asking the wrong guy.',
       },
       {
         userId: 3,
-        quote: 'Bart!!!.',
+        quote: 'Well, we hit a little snag when the universe sort of collapsed on itself. But Dad seemed cautiously optimistic.',
       },
       {
         userId: 4,

@@ -5,12 +5,13 @@ import { TestimonialService } from '../retention/testimonial.service';
 import { UserService } from '../customer/user.service';
 import { QuotesService } from '../quotes/quotes.service';
 import { TestimonialViewModel } from '../testimonial/testimonial.component';
+import { TestimonialUiComponent } from '../components/testimonial-ui/testimonial-ui.component';
 
 
 @Component({
   selector: 'app-testimonial-battery',
   standalone: true,
-  imports: [CommonModule, NgFor, AsyncPipe],
+  imports: [CommonModule, NgFor, AsyncPipe, TestimonialUiComponent],
   templateUrl: './testimonial-battery.component.html',
   styleUrls: ['./testimonial-battery.component.scss']
 })

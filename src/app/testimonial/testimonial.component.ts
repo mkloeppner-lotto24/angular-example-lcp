@@ -1,10 +1,11 @@
 import { Component, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { EMPTY, Observable, combineLatest, of, switchMap } from 'rxjs';
+import { EMPTY, Observable, combineLatest, delay, of, switchMap } from 'rxjs';
 import { TestimonialService } from '../retention/testimonial.service';
 import { UserService } from '../customer/user.service';
 import { QuotesService } from '../quotes/quotes.service';
 import { getRandomArbitrary } from '../utils/random';
+import { TestimonialUiComponent } from '../components/testimonial-ui/testimonial-ui.component';
 
 export type TestimonialViewModel = {
   name: string,
@@ -15,7 +16,7 @@ export type TestimonialViewModel = {
 @Component({
   selector: 'app-testimonial',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, TestimonialUiComponent],
   templateUrl: './testimonial.component.html',
   styleUrls: ['./testimonial.component.scss']
 })
@@ -29,8 +30,8 @@ export class TestimonialComponent {
   public testimonial$: Observable<TestimonialViewModel> = combineLatest([
     this.testimonialService.testimonial$,
     this.userService.users$,
-    this.quoteService.quotes$]).pipe(switchMap(([testimonials, users, quotes]) => {
-      const testimonial = testimonials[getRandomArbitrary(0,1)];
+    this.quoteService.quotes$]).pipe(delay(1000), switchMap(([testimonials, users, quotes]) => {
+      const testimonial = testimonials[getRandomArbitrary(1,2)];
 
       const user = users.find((user) => user.id === testimonial.userId);
       if (!user) return EMPTY;
