@@ -4,6 +4,7 @@ import { EMPTY, Observable, combineLatest, defaultIfEmpty, delay, interval, map,
 import { TestimonialService } from '../retention/testimonial.service';
 import { UserService } from '../customer/user.service';
 import { QuotesService } from '../quotes/quotes.service';
+import { getRandomArbitrary } from '../utils/random';
 
 export type TestimonialViewModel = {
   name: string,
@@ -28,7 +29,9 @@ export class TestimonialComponent {
   public testimonial$: Observable<TestimonialViewModel> = combineLatest([
     this.testimonialService.testimonial$,
     this.userService.users$,
-    this.quoteService.quotes$]).pipe(switchMap(([testimonial, users, quotes]) => {
+    this.quoteService.quotes$]).pipe(switchMap(([testimonials, users, quotes]) => {
+      const testimonial = testimonials[getRandomArbitrary(0,1)];
+
       const user = users.find((user) => user.id === testimonial.userId);
       if (!user) return EMPTY;
 
@@ -37,7 +40,7 @@ export class TestimonialComponent {
 
       return of({
         name: testimonial.name,
-        quote: quotes[testimonial.quote].quote,
+        quote: userQuotes[testimonial.quote].quote,
         profileIcon: user.profileIcon,
       });
     }));
