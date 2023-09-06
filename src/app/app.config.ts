@@ -11,8 +11,7 @@ export const appConfig: ApplicationConfig = {
     provideHttpClient(),
     provideImportsOrchestration({
       testimonial: 0,
-      text: 1,
-      battery: 2
+
     },
       withConcurrencyRelativeToDownlinkSpeed(2, 1),
     )
