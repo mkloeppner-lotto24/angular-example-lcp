@@ -45,7 +45,7 @@ export const mocks = [
       ctx.json([{
         id: 1,
         profileIcon: 'https://media.licdn.com/dms/image/C4D03AQFj2D9iDa7oJA/profile-displayphoto-shrink_400_400/0/1516997069619?e=1699488000&v=beta&t=1Rev1nSyFTTO8tvdhjTyBo532QrRt9Cb7yT4Q_Z7rnA'
-      }, 
+      },
       {
         id: 2,
         profileIcon: 'https://i1.sndcdn.com/avatars-000683197436-xmzgxf-t500x500.jpg'
@@ -53,7 +53,7 @@ export const mocks = [
       {
         id: 3,
         profileIcon: 'https://whatsondisneyplus.com/wp-content/uploads/2021/09/bart-.png'
-      }, 
+      },
       {
         id: 4,
         profileIcon: 'https://i.pinimg.com/originals/0e/f2/fb/0ef2fb13f53e1a50271b2e3bc2714a0f.jpg'
@@ -169,6 +169,31 @@ export const mocks = [
         userId: 6,
         quote: 'Bart!!!.',
       }]),
+    )
+  }),
+  rest.get('/recommendations', (req, res, ctx) => {
+    return res(
+      ctx.delay(2000),
+      ctx.status(200),
+      ctx.json([{
+        recommended: true,
+      },
+      {
+        recommended: true,
+      },
+      {
+        recommended: true,
+      },
+      {
+        recommended: true,
+      },
+      {
+        recommended: true,
+      },
+      {
+        recommended: true,
+      }
+      ]),
     )
   }),
 ]

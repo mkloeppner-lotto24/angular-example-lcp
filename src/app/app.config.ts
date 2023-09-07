@@ -10,9 +10,9 @@ export const appConfig: ApplicationConfig = {
     provideRouter(routes),
     provideHttpClient(),
     provideImportsOrchestration({
-      testimonial: 2,
-      text: 1,
-      battery: 0
+      testimonial: 0,
+      text: 2,
+      battery: 1
     },
       withConcurrencyRelativeToDownlinkSpeed(2, 1),
     )

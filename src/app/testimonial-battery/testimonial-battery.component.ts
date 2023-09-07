@@ -7,6 +7,7 @@ import { QuotesService } from '../quotes/quotes.service';
 import { TestimonialViewModel } from '../testimonial/testimonial.component';
 import { TestimonialUiComponent } from '../components/testimonial-ui/testimonial-ui.component';
 import { ImportedComponentReady } from '@lotto24-angular/imports-orchestrator';
+import { RecommendationService } from '../retention/recommendation.service';
 
 @Component({
   selector: 'app-testimonial-battery',
@@ -20,11 +21,13 @@ export class TestimonialBatteryComponent {
   private testimonialService = inject(TestimonialService);
   private userService = inject(UserService);
   private quoteService = inject(QuotesService);
+  private recommendationService = inject(RecommendationService);
 
   public testimonials$: Observable<TestimonialViewModel[]> = combineLatest([
     this.testimonialService.testimonial$,
     this.userService.users$,
-    this.quoteService.quotes$]).pipe(switchMap(([testimonials, users, quotes]) => {
+    this.quoteService.quotes$,
+    this.recommendationService.recommendations$]).pipe(switchMap(([testimonials, users, quotes, recommendations]) => {
       const testimonialViewModels: TestimonialViewModel[] = [];
       for (const testimonial of testimonials) {
         const user = users.find((user) => user.id === testimonial.userId);
